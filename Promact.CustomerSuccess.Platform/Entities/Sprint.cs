@@ -3,9 +3,9 @@ using Volo.Abp.Domain.Entities.Auditing;
 
 namespace Promact.CustomerSuccess.Platform.Entities
 {
-    public class Sprint : AuditedAggregateRootWithUser<Guid, ApplicationUser>
+    public class Sprint : AuditedEntity<Guid>
     {
-        [ForeignKey("PhaseMilestone")]
+        [ForeignKey(nameof(PhaseMilestone))]
         public Guid PhaseMilestoneId { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

@@ -1,5 +1,5 @@
 ﻿using Promact.CustomerSuccess.Platform.Entities;
-using Promact.CustomerSuccess.Platform.Services.Dtos;
+using Promact.CustomerSuccess.Platform.Services.Dtos.Projects;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -7,8 +7,9 @@ using Volo.Abp.Domain.Repositories;
 namespace Promact.CustomerSuccess.Platform.Services
 {
     public class ProjectService :
-        CrudAppService<Project, 
-            ProjectDto, 
+        CrudAppService<
+            Project, 
+            ProjectDto,
             Guid, 
             PagedAndSortedResultRequestDto, 
             CreateProjectDto, 
@@ -17,7 +18,9 @@ namespace Promact.CustomerSuccess.Platform.Services
     {             
         public ProjectService(IRepository<Project, Guid> projectRepository) : 
             base(projectRepository)
+
         {              
         }                
     }
 }
+ 

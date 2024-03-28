@@ -26,12 +26,18 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
     public DbSet<ClientFeedback> ClientFeedbacks { get; set; }
     public DbSet<ProjectBudget> ProjectBudgets { get; set; }
     public DbSet<PhaseMilestone> PhaseMilestones { get; set; }
-    public DbSet<ProjectResources> ProjectResources { get; set; }
+    public DbSet<ProjectResource> ProjectResources { get; set; }
     public DbSet<RiskProfile> RiskProfiles { get; set; }
     public DbSet<MeetingMinute> MeetingMinutes { get; set; }
     public DbSet<EscalationMatrix> EscalationMatrices { get; set; }
     public DbSet<Sprint> Sprints { get; set; }
     public DbSet<ApplicationUser> Users { get; set; }
+    public DbSet<ProjectUpdate> ProjectUpdates { get; set; }
+    public DbSet<ApprovedTeam> ApprovedTeams { get; set; }
+    public DbSet<Phase> Phases { get; set; }
+    public DbSet<VersionHistory> VersionHistories { get; set; }
+    public DbSet<AuditHistory> AuditHistories { get; set; }
+    public DbSet<Stakeholder> Stakeholders { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -73,7 +79,7 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
         {
             ProjectBudget.ConfigureByConvention();
         });
-        builder.Entity<ProjectResources>(ProjectResources =>
+        builder.Entity<ProjectResource>(ProjectResources =>
         {
             ProjectResources.ConfigureByConvention();
         });
@@ -102,6 +108,34 @@ public class PlatformDbContext : AbpDbContext<PlatformDbContext>
             ApplicationUser.ConfigureByConvention();
         });
 
+        builder.Entity<ProjectUpdate>(ProjectUpdate =>
+        {
+            ProjectUpdate.ConfigureByConvention();
+        });
 
+        builder.Entity<ApprovedTeam>(ApprovedTeam =>
+        {
+            ApprovedTeam.ConfigureByConvention();
+        });
+
+        builder.Entity<Phase>(Phase =>
+        {
+            Phase.ConfigureByConvention();
+        });
+
+        builder.Entity<VersionHistory>(VersionHistory =>
+        {
+            VersionHistory.ConfigureByConvention();
+        });
+
+        builder.Entity<AuditHistory>(AuditHistory =>
+        {
+            AuditHistory.ConfigureByConvention();
+        });
+
+        builder.Entity<Stakeholder>(Stakeholder =>
+        {
+            Stakeholder.ConfigureByConvention();
+        });
     }
 }

@@ -5,6 +5,7 @@ using Volo.Abp;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Identity;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.Uow;
 
@@ -26,7 +27,7 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
         IOpenIddictApplicationManager applicationManager,
         IOpenIddictScopeManager scopeManager,
         IPermissionDataSeeder permissionDataSeeder,
-        IStringLocalizer<OpenIddictResponse> l)
+    IStringLocalizer<OpenIddictResponse> l)
     {
         _configuration = configuration;
         _applicationManager = applicationManager;
@@ -39,7 +40,7 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
     public virtual async Task SeedAsync(DataSeedContext context)
     {
         await CreateScopesAsync();
-        await CreateApplicationsAsync();
+        await CreateApplicationsAsync();  
     }
 
     private async Task CreateScopesAsync()
@@ -318,5 +319,7 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
 
             await _applicationManager.CreateAsync(application);
         }
+
+
     }
 }
