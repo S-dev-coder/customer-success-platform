@@ -15,6 +15,7 @@ namespace Promact.CustomerSuccess.Platform.Services.Dtos.Projects
         public Guid Id { get; set; }
         public required string Name { get; set; }
         public required string Description { get; set; }
+        public  string Manager { get; set; }
         public DateTime CreationTime { get; protected set; }
         public IEnumerable<DocumentDto>? Documents { get; set; }
         public IEnumerable<ProjectBudgetDto>? Budgets { get; set; }
