@@ -3,7 +3,7 @@ using Volo.Abp.Domain.Entities.Auditing;
 
 namespace Promact.CustomerSuccess.Platform.Entities
 {
-    public class PhaseMilestone : AuditedEntity<Guid>
+    public class PhaseMilestone : AuditedAggregateRootWithUser<Guid, ApplicationUser>
     {
         [ForeignKey("Project")]
         public Guid ProjectId { get; set; }
