@@ -27,7 +27,7 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
         IOpenIddictApplicationManager applicationManager,
         IOpenIddictScopeManager scopeManager,
         IPermissionDataSeeder permissionDataSeeder,
-    IStringLocalizer<OpenIddictResponse> l)
+        IStringLocalizer<OpenIddictResponse> l)
     {
         _configuration = configuration;
         _applicationManager = applicationManager;
