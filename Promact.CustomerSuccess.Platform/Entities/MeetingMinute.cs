@@ -13,7 +13,7 @@ namespace Promact.CustomerSuccess.Platform.Entities
         public required string Comments { get; set; }
         public virtual Project? Project { get; set; }
 
-        public int Duration { get; set; }
+        public double Duration { get; set; }
 
         public override object?[] GetKeys()
         {
