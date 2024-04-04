@@ -7,6 +7,6 @@
         public required string MoMLink { get; set; }
         public required string Comments { get; set; }
 
-        public int Duration { get; set; }
+        public double Duration { get; set; }
     }
 }
