@@ -9,10 +9,15 @@ namespace Promact.CustomerSuccess.Platform.Services.ApprovedTeams
 {
 
     public class ApprovedTeamService :
-      CrudAppService<ApprovedTeam, ApprovedTeamDto, Guid, PagedAndSortedResultRequestDto, CreateApprovedTeamDto, UpdateApprovedTeamDto>,
-      IApprovedTeamService
-        {
-            public ApprovedTeamService(IRepository<ApprovedTeam, Guid> repository) : base(repository)
+          CrudAppService<ApprovedTeam,
+          ApprovedTeamDto,
+          Guid,
+          PagedAndSortedResultRequestDto, 
+          CreateApprovedTeamDto, 
+          UpdateApprovedTeamDto>,
+          IApprovedTeamService
+         {
+          public ApprovedTeamService(IRepository<ApprovedTeam, Guid> repository) : base(repository)
             {
             }
         }
