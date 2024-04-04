@@ -5,7 +5,7 @@ using Volo.Abp.Domain.Entities.Auditing;
 namespace Promact.CustomerSuccess.Platform.Entities
 {
 
-    public class DocumentVersion : AuditedEntity<Guid>
+    public class DocumentVersion : AuditedAggregateRootWithUser<Guid, ApplicationUser>
     {
         public required ChangeType ChangeType { get; set; }
         public string? Changes { get; set; }
