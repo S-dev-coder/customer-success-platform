@@ -48,6 +48,7 @@ using Volo.Abp.Security.Claims;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
+using Promact.CustomerSuccess.Platform.Services.EmailNotifications;
 
 namespace Promact.CustomerSuccess.Platform;
 
@@ -148,7 +149,7 @@ public class PlatformModule : AbpModule
         {
             context.Services.Replace(ServiceDescriptor.Singleton<IEmailSender, NullEmailSender>());
         }
-
+        context.Services.AddScoped<IEmailNotificationService, EmailNotificationService>();
         ConfigureAuthentication(context);
         ConfigureBundles();
         ConfigureMultiTenancy();
@@ -161,6 +162,7 @@ public class PlatformModule : AbpModule
         ConfigureCors(context, configuration);
         ConfigureDataProtection(context);
         ConfigureEfCore(context);
+        context.Services.AddSingleton<IEmailNotificationService, EmailNotificationService>();
     }
 
     private void ConfigureAuthentication(ServiceConfigurationContext context)
