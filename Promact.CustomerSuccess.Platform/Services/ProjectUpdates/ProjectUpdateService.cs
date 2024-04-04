@@ -1,6 +1,4 @@
 ﻿
-
-
 using Promact.CustomerSuccess.Platform.Entities;
 using Promact.CustomerSuccess.Platform.Services.Dtos.ProjectUpdates;
 using Volo.Abp.Application.Dtos;
@@ -16,7 +14,7 @@ namespace Promact.CustomerSuccess.Platform.Services.ProjectUpdates
                 PagedAndSortedResultRequestDto,
                 CreateProjectUpdateDto,
                 UpdateProjectUpdateDto>,
-            IProjectUpdateService
+                IProjectUpdateService
     {
         public ProjectUpdateService(IRepository<ProjectUpdate, Guid> repository) : base(repository)
         {
