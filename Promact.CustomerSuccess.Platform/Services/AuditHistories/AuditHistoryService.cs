@@ -18,7 +18,7 @@ namespace Promact.CustomerSuccess.Platform.Services.AuditHistories
             PagedAndSortedResultRequestDto, 
             CreateAuditHistoryDto, 
             UpdateAuditHistoryDto>, 
-        IAuditHistoryService
+            IAuditHistoryService
     {
         private readonly IMapper _mapper;
         public AuditHistoryService(IRepository<AuditHistory, Guid> repository, IMapper mapper) : base(repository)
