@@ -49,6 +49,8 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
 using Promact.CustomerSuccess.Platform.Services.EmailNotifications;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Promact.CustomerSuccess.Platform;
 
@@ -149,8 +151,7 @@ public class PlatformModule : AbpModule
         {
             context.Services.Replace(ServiceDescriptor.Singleton<IEmailSender, NullEmailSender>());
         }
-        context.Services.AddScoped<IEmailNotificationService, EmailNotificationService>();
-        ConfigureAuthentication(context);
+        ConfigureAuthentication(context, configuration);
         ConfigureBundles();
         ConfigureMultiTenancy();
         ConfigureUrls(configuration);
@@ -165,12 +166,25 @@ public class PlatformModule : AbpModule
         context.Services.AddSingleton<IEmailNotificationService, EmailNotificationService>();
     }
 
-    private void ConfigureAuthentication(ServiceConfigurationContext context)
+    private void ConfigureAuthentication(ServiceConfigurationContext context, IConfiguration configuration)
     {
         context.Services.ForwardIdentityAuthenticationForBearer(OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme);
         context.Services.Configure<AbpClaimsPrincipalFactoryOptions>(options =>
         {
             options.IsDynamicClaimsEnabled = true;
+        });
+        context.Services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        }).AddJwtBearer(options =>
+        {
+            options.Authority = $"https://{configuration["Auth0:Domain"]}/";
+            options.Audience = configuration["Auth0:Audience"];
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateAudience = true,
+                ValidateIssuerSigningKey = true
+            };
         });
     }
 
